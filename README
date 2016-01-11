@@ -1,0 +1,19 @@
+Obtain data generators at run time, from instances of `Arbitrary`.
+
+We define one function with the following (simplified) signature
+
+    RuntimeArbitrary.getArbGen :: Typeable a => proxy a -> [Gen a]
+
+The `proxy` type constructor can be anything, whatever makes it easiest to provide the argument. For example `[] :: [Foo]` is a perfectly good argument, as long as `Foo` is `Typeable`.
+
+The resulting list will contain the `arbitrary` method of the `Arbitrary` type class, if a suitable instance is in scope at initialisation time (see below). If not, an empty list is returned. (Really, this is a `Maybe (Gen a)` rather than a `[Gen a]`, but it's less verbose to manipulate lists than maybes).
+
+Initialisation is required to find instances, and requires the following line appear somewhere in your module (or one of its imports):
+
+    mkIfCxtInstances ''Arbitrary
+
+This is Template Haskell, and uses the `IfCxt` module from the `ifcxt` package, so you must have all of those things enabled/imported. This is where the magic happens.
+
+Conceptually, this initialisation line generates, at compile time, a Map of all `Arbitrary` instances which are in-scope at that point (i.e. available via imports), indexed by type rep. At run time, when we execute a call to `getArbGen`, it simply looks up the given type rep in this Map, to get the corresponding `arbitrary` method.
+
+Since Template Haskell cannot (yet) manipulate a module's imports, this need to initialise "manually" seems unavoidable (if `runtime-arbitrary` did this initialisation for you, only those instances we decide to import would be available; with no extension mechanism).
