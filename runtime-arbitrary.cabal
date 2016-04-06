@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                runtime-arbitrary
-version:             0.1.0.3
+version:             0.1.0.4
 synopsis:            Runtime generation of Arbitrary values
 -- description:         
 homepage:            http://chriswarbo.net/git/runtime-arbitrary
