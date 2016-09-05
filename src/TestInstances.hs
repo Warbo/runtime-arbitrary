@@ -5,6 +5,8 @@ import Test.QuickCheck
 
 data Foo = AFoo deriving (Show, Eq, Typeable)
 
+data Nat = Z | S Nat
+
 instance Ord Foo where
   compare x y = EQ
 
