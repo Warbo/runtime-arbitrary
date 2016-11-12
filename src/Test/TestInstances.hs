@@ -1,4 +1,4 @@
-module TestInstances where
+module Test.TestInstances where
 
 import Data.Typeable
 import Test.QuickCheck

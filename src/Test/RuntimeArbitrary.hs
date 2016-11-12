@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes, FlexibleInstances, FlexibleContexts, ScopedTypeVariables, ConstraintKinds #-}
 
-module RuntimeArbitrary where
+module Test.RuntimeArbitrary where
 
 import Data.Typeable
 import IfCxt
