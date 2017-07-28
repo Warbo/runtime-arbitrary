@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                runtime-arbitrary
-version:             0.1.0.6
+version:             0.1.1.0
 synopsis:            Runtime generation of Arbitrary values
 description:         Runtime generation of Arbitrary values
 homepage:            http://chriswarbo.net/projects/repos/runtime-arbitrary.html
@@ -10,10 +10,8 @@ license:             PublicDomain
 license-file:        LICENSE
 author:              Chris Warburton
 maintainer:          chriswarbo@gmail.com
--- copyright:           
 category:            Language
 build-type:          Simple
--- extra-source-files:  
 cabal-version:       >=1.10
 
 source-repository head
@@ -23,8 +21,6 @@ source-repository head
 library
   exposed-modules:     Test.RuntimeArbitrary
                      , Test.TestInstances
-  -- other-modules:       
-  -- other-extensions:    
   build-depends:       base >=4.7 && < 4.10
                      , QuickCheck
                      , ifcxt
